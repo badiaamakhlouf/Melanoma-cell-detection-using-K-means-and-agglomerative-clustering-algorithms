@@ -48,9 +48,13 @@ relative_luminance[j]= 0.2126*centroids[j,0] + 0.7152*centroids[j,1] + 0.0722*ce
 Results of Erosion, Opening and dilation:
 
 From figures: 4, 5 and 6 it is clear that each time the filter (int(n,n)) increases the mole area is reduced. In the coming work, the int has been chosen 13 in order to be good and convenient for all other pictures.
+
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2015%20Filtered%20Mole%20Area%20with%20np.ones((20%2C20)).png)
+
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2016%20Filtered%20Mole%20Area%20with%20np.ones((13%2C13)).png)
+
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2017%20Filtered%20Mole%20Area%20with%20np.ones((4%2C4)).png)
+
 
 Calculate the median, which corresponds to the center of the mole: consider all the pixels with value 1 then perform median of the founded 2D array using numpy the illustration is in Figure 7.
 
