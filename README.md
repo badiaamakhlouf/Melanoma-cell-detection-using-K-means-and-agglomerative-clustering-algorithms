@@ -1,32 +1,39 @@
 # Clustering-with-ML 
 ## Objectives: 
-This script is composed by two parts: 
+This work is composed by two parts: 
 
 -The first part aims to help medical doctors in moles analysis by analyzing the border of each mole presented in a given image using the K-means clustering algorithm of Scikit learn. 
 
--The second part consists on performing the agglomerative clustering on the data of chronic kidney disease and comment the results. 
+-The second part consists on performing the agglomerative clustering on the data related to chronic kidney disease and then results were commented. 
 
 Knowing that, doctors to diagnose melanoma moles consider not only borders but also four other features: asymmetry, color, diameter and evolution. 
 
-After performing the K-means algorithm on each of the given image and extracting the mole area, it is required to find the corresponding contour. Also, evaluate the perimeter of a circle that has an area equal to the mole area then evaluate the ratio between the perimeter of the mole and the perimeter of the circle. 
+After performing the K-means algorithm on each of the given image (in data/images) and extracting the mole area, it was required to find the corresponding contour. Also, evaluate the perimeter of a circle that has an area equal to the mole area then evaluate the ratio between the perimeter of the mole and the perimeter of the circle. 
 # Part 1: 
 ## 1.Dataset description: 
-The provided dataset for this lab comports 54 images classified into three classes:
+The provided dataset for this lab comports 54 images (in data/images) classified into three classes:
 ### Class 1: 11 images have the name low_risk_n.jpg for moles and they have a low probability of being melanoma (i.e. tumors).
 ### Class 2:  16 images named medium_risk_n.jpg for moles that have a low probability of be-ing melanoma.
 ### Class 3: 27 images of name_melanoma_n.jpg for moles that have a high probability of being melanoma.
 In all the mentioned cases n was an integer. 
 ## 2.The K-means algorithm:
-It is one of the iterative clustering algorithms, which consists on splitting the original da-taset into K clusters. Samples are assigned to each cluster based on the minimum distance between each sample and the cluster’s centroid. The centroid is updated for each iteration till a stop condition is verified. In this work, the cluster number was chosen 3 and the obser-vations or samples were the pixels of the image. 
+It is one of the iterative clustering algorithms, which consists on splitting the original da-taset into K clusters. Samples are assigned to each cluster based on the minimum distance between each sample and the cluster’s centroid. The centroid is updated for each iteration till a stop condition is verified. In this work, the cluster number was chosen 3 and the observations or samples were the pixels of the image. 
 
 For each iteration, the K-means tests hundreds of different initial vectors to select the best clustering among the obtained results. The best clustering is when the initial vector has pre-sented the minimum moment of inertia. The performance of K-means or the best solution strictly depends on the target features. 
 
-## 3.Requested image processing:
-1- Read the image in Python and show it ==> the image is made of 583x583 pixels and each color has its value as a three element vector [a,b,c], e.g. black is [0,0,0] and white is [255,255,255]. Result is illustrated in Figure ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2012%20original.png) .
+## 3.Requested image processing steps:
+1- Read the image in Python and show it ==> the image is made of 583x583 pixels and each color has its value as a three element vector [a,b,c], e.g. black is [0,0,0] and white is [255,255,255]. Result is illustrated in Figure 1 : original image 
 
-2- Perform the K-means algorithm of Scikit learn library on the original image (Figure 12 in results folder) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 13 (in results folder).
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2012%20original.png) .
 
-3- Find the set of points forming the mole. Knowing that, those points have the darkest color. A relative luminance RGB (Read, Green, Blue) standard has been used which consists that the lowest value (0 value) corresponds to the darkest point. So, select its index. The result of selection is presented in the Figure 14 (in results folder) below.
+2- Perform the K-means algorithm of Scikit learn library on the original image (Figure 1) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 2
+
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2013%20The%20result%20of%20scikit%20Kmeans.png)
+
+3- Find the set of points forming the mole. Knowing that, those points have the darkest color. A relative luminance RGB (Read, Green, Blue) standard has been used which consists that the lowest value (0 value) corresponds to the darkest point. So, select its index. The result of selection is presented in the Figure 3 below.
+
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2014%20Mole%20Area%20after%20darkest%20points%20selection.png)
+
 The centroids is a vector of 3 elements equal to the number of clusters, so the index j goes from 0 to 2
 relative_luminance[j]= 0.2126*centroids[j,0] + 0.7152*centroids[j,1] + 0.0722*centroids[j,2]
 
@@ -40,9 +47,14 @@ relative_luminance[j]= 0.2126*centroids[j,0] + 0.7152*centroids[j,1] + 0.0722*ce
   
 Results of Erosion, Opening and dilation:
 
-From figures: 15, 16 and 17 it is clear that each time the int increases the mole area is reduced. In the coming work, the int has been chosen 13 in order to be good and convenient for all other pictures.
+From figures: 4, 5 and 6 it is clear that each time the filter (int(n,n)) increases the mole area is reduced. In the coming work, the int has been chosen 13 in order to be good and convenient for all other pictures.
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2015%20Filtered%20Mole%20Area%20with%20np.ones((20%2C20)).png)
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2016%20Filtered%20Mole%20Area%20with%20np.ones((13%2C13)).png)
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2017%20Filtered%20Mole%20Area%20with%20np.ones((4%2C4)).png)
 
-Calculate the median, which corresponds to the center of the mole: consider all the pixels with value one then perform median of the founded 2D array using numpy the illustration is in Figure 18.
+Calculate the median, which corresponds to the center of the mole: consider all the pixels with value 1 then perform median of the founded 2D array using numpy the illustration is in Figure 7.
+
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2018%20Filtered%20mole%20with%20median.png)
 
 Implement an algorithm that starts from the center of the mole, which was calculated through the median, and finds rectangular region that includes the entire mole to isolate the mole from the rest of the image.
 
