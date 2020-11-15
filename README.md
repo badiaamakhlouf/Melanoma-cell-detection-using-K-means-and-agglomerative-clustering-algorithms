@@ -72,6 +72,7 @@ Implement an algorithm that starts from the center of the mole, which was calcul
 5- Contour detection: considering each column and find the index of the first and last pixel with value 1 then perform the same work considering each row. 
 
 The Figure 8 was obtained using “measure.find_contours “the predefined function of skimage library while the Figure 9 was obtained after performing the previous algorithm.
+
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2020%20Contour%20with%20%E2%80%9Cmeasure.find_contours%E2%80%9D%20function%20of%20skimage.png)
 
 Figure 8: Contour with “measure.find_contours” function of skimage 
@@ -102,14 +103,22 @@ Besides, the Scikit Learn implementation requires numerical data only so all cat
 
 In order to manage the NaN values the following two approaches were applied:
 
-•	Removing the rows containing NaN values using the methods dropna of Pandas. 
+•	Removing the rows containing NaN values using the methods dropna of Pandas (case 1). 
 
-•	Treating NaN values as another possible random variable but must be substituted with a number not already presented in the dataset. In this report -3 was chosen as random value.
+•	Treating NaN values as another possible random variable but must be substituted with a number not already presented in the dataset. In this report -3 was chosen as random value (case 2).
 
 ## 3. Agglomerative clustering
 It starts from N observations (rows number of matrix X), each ob-servation is a vector of F features, I evaluated the distance between each two observations from the N observations. The two observations characterized by the minimum distance form the first cluster. Then I repeated the process with N-1 objects, which are N-2 observations and 1 cluster that is composed by 2 observations with first minimum distance. A repetitive process that stop when we get just one object.
 
-In this second script, I had used the agglomerative clustering of SciPy and we had obtained the following result in Figure 22. The result refers to the case remove of rows containing Not A Number and reducing the number of rows.
+In this second script, I had used the agglomerative clustering of SciPy and we had obtained the following result in Figure 10 and Figure 11. The result refers to the cases mentioned before remove and substitution.
+
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/case1.png) 
+
+Figure 10: Removing the rows containing NaN values using the methods dropna of Pandas (case 1) 
+
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/case2.png)
+
+Figure 11: Substitution of NaN by -3  
 
 
 
