@@ -50,9 +50,9 @@ Implement an algorithm that starts from the center of the mole, which was calcul
 The Figure 20 was obtained using “measure.find_contours “the predefined function of skimage library while the Figure 21 was obtained after performing the previous algorithm.
 
 6- Calculate the ratio between the mole perimeter and the contour perimeter 
-	The circle perimeter = √(4*π*Area), Area is the sum of all pixels with value 1 ( forming the mole)
-	The mole perimeter is the sum of all points in the contour
-	Ratio=  (perimeter_circle)/(perimeter_mole)
+The circle perimeter = √(4*π*Area), Area is the sum of all pixels with value 1 ( forming the mole)
+The mole perimeter is the sum of all points in the contour
+Ratio=  (perimeter_circle)/(perimeter_mole)
 
 # Part 2: Agglomerative/ hierarchical clustering and chronic kidney disease 
 ## 1.The Chronic kidney disease (CKD) (From my professor's course):
@@ -66,10 +66,13 @@ Before the analyzing phase, the dataset must be prepared and cleaned due to the 
 Two options are exist for cleaning the data: manually by editing the original CSV file but it is preferable if the file is short while in our case it is better to exploit arguments of pandas.
 
 Besides, the Scikit Learn implementation requires numerical data only so all categorical features must be mapped into numbers.
+
 •	Yes ==> 1 and no ==> 0, Normal ==> 1 and abnormal==> 0, etc.
 
 In order to manage the NaN values the following two approaches were applied:
+
 •	Removing the rows containing NaN values using the methods dropna of Pandas. 
+
 •	Treating NaN values as another possible random variable but must be substituted with a number not already presented in the dataset. In this report -3 was chosen as random value.
 
 ## 3. Agglomerative clustering
