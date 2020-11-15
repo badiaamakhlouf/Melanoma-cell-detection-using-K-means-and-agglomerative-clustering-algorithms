@@ -26,7 +26,7 @@ For each iteration, the K-means tests hundreds of different initial vectors to s
 
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2012%20original.png) .
 
-2- Perform the K-means algorithm of Scikit learn library on the original image (Figure 1) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 2
+2- Perform the K-means algorithm of Scikit learn library on the original image (Figure 1) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 2 
 
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2013%20The%20result%20of%20scikit%20Kmeans.png)
 
@@ -51,19 +51,34 @@ From figures: 4, 5 and 6 it is clear that each time the filter (int(n,n)) increa
 
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2015%20Filtered%20Mole%20Area%20with%20np.ones((20%2C20)).png)
 
+Figure 4: Filtered Mole Area with np.ones((20,20))
+
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2016%20Filtered%20Mole%20Area%20with%20np.ones((13%2C13)).png)
+
+Figure 5: Filtered Mole Area with np.ones((13,13))
 
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2017%20Filtered%20Mole%20Area%20with%20np.ones((4%2C4)).png)
 
+Figure 6: Filtered Mole Area with np.ones((4,4))
 
 Calculate the median, which corresponds to the center of the mole: consider all the pixels with value 1 then perform median of the founded 2D array using numpy the illustration is in Figure 7.
 
 ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2018%20Filtered%20mole%20with%20median.png)
 
-Implement an algorithm that starts from the center of the mole, which was calculated through the median, and finds rectangular region that includes the entire mole to isolate the mole from the rest of the image.
+Implement an algorithm that starts from the center of the mole, which was calculated through the median, and finds rectangular region that includes the entire mole to isolate the mole from the rest of the image. Figure 7.1 : Filtered centered Mole with median
+
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2019%20Filtered%20centered%20Mole%20with%20median.png)
 
 5- Contour detection: considering each column and find the index of the first and last pixel with value 1 then perform the same work considering each row. 
-The Figure 20 was obtained using “measure.find_contours “the predefined function of skimage library while the Figure 21 was obtained after performing the previous algorithm.
+
+The Figure 8 was obtained using “measure.find_contours “the predefined function of skimage library while the Figure 9 was obtained after performing the previous algorithm.
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2020%20Contour%20with%20%E2%80%9Cmeasure.find_contours%E2%80%9D%20function%20of%20skimage.png)
+
+Figure 8: Contour with “measure.find_contours” function of skimage 
+
+![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2021%20%20Contour%20of%20the%20mole.png)
+
+Figure 9: Contour of the mole after applying my algorithm
 
 6- Calculate the ratio between the mole perimeter and the contour perimeter 
 The circle perimeter = √(4*π*Area), Area is the sum of all pixels with value 1 ( forming the mole)
