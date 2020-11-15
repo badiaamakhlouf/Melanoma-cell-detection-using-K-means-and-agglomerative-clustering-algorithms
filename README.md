@@ -22,7 +22,7 @@ It is one of the iterative clustering algorithms, which consists on splitting th
 For each iteration, the K-means tests hundreds of different initial vectors to select the best clustering among the obtained results. The best clustering is when the initial vector has pre-sented the minimum moment of inertia. The performance of K-means or the best solution strictly depends on the target features. 
 
 ## 3.Requested image processing:
-1- Read the image in Python and show it  the image is made of 583x583 pixels and each color has its value as a three element vector [a,b,c], e.g. black is [0,0,0] and white is [255,255,255]. Result is illustrated in Figure 12.
+1- Read the image in Python and show it ==> the image is made of 583x583 pixels and each color has its value as a three element vector [a,b,c], e.g. black is [0,0,0] and white is [255,255,255]. Result is illustrated in Figure 12.
 
 2-Perform the K-means algorithm of Scikit learn library on the original image (Figure 12) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 13.
 
@@ -55,10 +55,27 @@ The Figure 20 was obtained using “measure.find_contours “the predefined func
 	Ratio=  (perimeter_circle)/(perimeter_mole)
 
 # Part 2: Agglomerative/ hierarchical clustering and chronic kidney disease 
+## 1.The Chronic kidney disease (CKD) (From my professor's course):
+A disease that affects the Kidney’s functionality. The kidney may loses its function for a period of months or years. This kind of disease has many causes where the major one is diabetes, high blood pressure, glomerulonephritis and polycystic kidney disease. Diagnosis is generally by blood tests to measure the glomerular filtration rate and urine tests to measure albumin.
+## 2.Dataset description:
+The first 29 rows of the provided dataset file for this work contain the description of the features and they must be skipped. The total dataset contains 400 instances classified into two classes as follow: 250 corresponding to the CKD and 150 not CKD.
 
-Agglomerative clustering starts from N observations (rows number of matrix X), each ob-servation is a vector of F features, I evaluated the distance between each two observations from the N observations. The two observations characterized by the minimum distance form the first cluster. Then I repeated the process with N-1 objects, which are N-2 observations and 1 cluster that is composed by 2 observations with first minimum distance. A repetitive process that stop when we get just one object.
+From the provided description, it is noticed the existence of 24 features plus the last field (column 25) that corresponds to the class which specifies if the disease is present (ckd) or not (notckd). In the 24 features, it exists 11 numerical features and the rest are categorical or nominal features. 
 
-In this second script, I had used the agglomerative clustering of SciPy and we had obtained the fol-lowing result in Figure 22. The result refers to the case remove of rows containing Not A Number and reducing the number of rows.
+Before the analyzing phase, the dataset must be prepared and cleaned due to the existence of some errors and missing fields. This task is usually needed and sometimes requires a long period. Moreover, the dataset contains some rows with an extra separator field “,”, so 26 columns were read instead of 25. The missing fields were identified by“?” and at the end the categorical features must be transformed into numerical but before that there are “hidden” typing error corresponds to typing “ yes” and not “yes” must be deleted.
+Two options are exist for cleaning the data: manually by editing the original CSV file but it is preferable if the file is short while in our case it is better to exploit arguments of pandas.
+
+Besides, the Scikit Learn implementation requires numerical data only so all categorical features must be mapped into numbers.
+•	Yes ==> 1 and no ==> 0, Normal ==> 1 and abnormal==> 0, etc.
+
+In order to manage the NaN values the following two approaches were applied:
+•	Removing the rows containing NaN values using the methods dropna of Pandas. 
+•	Treating NaN values as another possible random variable but must be substituted with a number not already presented in the dataset. In this report -3 was chosen as random value.
+
+## 3. Agglomerative clustering
+It starts from N observations (rows number of matrix X), each ob-servation is a vector of F features, I evaluated the distance between each two observations from the N observations. The two observations characterized by the minimum distance form the first cluster. Then I repeated the process with N-1 objects, which are N-2 observations and 1 cluster that is composed by 2 observations with first minimum distance. A repetitive process that stop when we get just one object.
+
+In this second script, I had used the agglomerative clustering of SciPy and we had obtained the following result in Figure 22. The result refers to the case remove of rows containing Not A Number and reducing the number of rows.
 
 
 
