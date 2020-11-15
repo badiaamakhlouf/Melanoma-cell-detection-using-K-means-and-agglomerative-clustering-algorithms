@@ -26,22 +26,25 @@ For each iteration, the K-means tests hundreds of different initial vectors to s
 
 2-Perform the K-means algorithm of Scikit learn library on the original image (Figure 12) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 13.
 
-
 3- Find the set of points forming the mole. Knowing that, those points have the darkest color. A relative luminance RGB (Read, Green, Blue) standard has been used which consists that the lowest value (0 value) corresponds to the darkest point. So, select its index. The result of selection is presented in the Figure 14 below.
 The centroids is a vector of 3 elements equal to the number of clusters, so the index j goes from 0 to 2
 relative_luminance[j]= 0.2126*centroids[j,0] + 0.7152*centroids[j,1] + 0.0722*centroids[j,2]
 
 4- In order to separate the mole from the rest of the image, the following steps were realized on the output of K-means:
+
 	Erosion ==> removes small objects
+	
 	Opening ==> removes small objects for the second time with structure=np.ones((int,int))
+	
 	Dilation ==> maximum filter to make the boundaries smoother 
   
 Results of Erosion, Opening and dilation:
 
 From figures: 15, 16 and 17 it is clear that each time the int increases the mole area is reduced. In the coming work, the int has been chosen 13 in order to be good and convenient for all other pictures.
-	Calculate the median, which corresponds to the center of the mole: consider all the pixels with value one then perform median of the founded 2D array using numpy the illustration is in Figure 18.
-	Implement an algorithm that starts from the center of the mole, which was calculated through the median, and finds rectangular region that includes the entire mole to isolate the mole from the rest of the image.
 
+Calculate the median, which corresponds to the center of the mole: consider all the pixels with value one then perform median of the founded 2D array using numpy the illustration is in Figure 18.
+
+Implement an algorithm that starts from the center of the mole, which was calculated through the median, and finds rectangular region that includes the entire mole to isolate the mole from the rest of the image.
 
 5- Contour detection: considering each column and find the index of the first and last pixel with value 1 then perform the same work considering each row. 
 The Figure 20 was obtained using “measure.find_contours “the predefined function of skimage library while the Figure 21 was obtained after performing the previous algorithm.
@@ -51,6 +54,11 @@ The Figure 20 was obtained using “measure.find_contours “the predefined func
 	The mole perimeter is the sum of all points in the contour
 	Ratio=  (perimeter_circle)/(perimeter_mole)
 
+# Part 2: Agglomerative/ hierarchical clustering and chronic kidney disease 
+
+Agglomerative clustering starts from N observations (rows number of matrix X), each ob-servation is a vector of F features, I evaluated the distance between each two observations from the N observations. The two observations characterized by the minimum distance form the first cluster. Then I repeated the process with N-1 objects, which are N-2 observations and 1 cluster that is composed by 2 observations with first minimum distance. A repetitive process that stop when we get just one object.
+
+In this second script, I had used the agglomerative clustering of SciPy and we had obtained the fol-lowing result in Figure 22. The result refers to the case remove of rows containing Not A Number and reducing the number of rows.
 
 
 
