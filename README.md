@@ -24,7 +24,7 @@ For each iteration, the K-means tests hundreds of different initial vectors to s
 ## 3.Requested image processing:
 1- Read the image in Python and show it ==> the image is made of 583x583 pixels and each color has its value as a three element vector [a,b,c], e.g. black is [0,0,0] and white is [255,255,255]. Result is illustrated in Figure 12.
 
-2-Perform the K-means algorithm of Scikit learn library on the original image (Figure 12) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 13.
+2- Perform the K-means algorithm of Scikit learn library on the original image (Figure 12 in result folder) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 13 (.
 
 3- Find the set of points forming the mole. Knowing that, those points have the darkest color. A relative luminance RGB (Read, Green, Blue) standard has been used which consists that the lowest value (0 value) corresponds to the darkest point. So, select its index. The result of selection is presented in the Figure 14 below.
 The centroids is a vector of 3 elements equal to the number of clusters, so the index j goes from 0 to 2
