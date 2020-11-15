@@ -22,7 +22,7 @@ It is one of the iterative clustering algorithms, which consists on splitting th
 For each iteration, the K-means tests hundreds of different initial vectors to select the best clustering among the obtained results. The best clustering is when the initial vector has pre-sented the minimum moment of inertia. The performance of K-means or the best solution strictly depends on the target features. 
 
 ## 3.Requested image processing:
-1- Read the image in Python and show it ==> the image is made of 583x583 pixels and each color has its value as a three element vector [a,b,c], e.g. black is [0,0,0] and white is [255,255,255]. Result is illustrated in Figure ![results](Figure 12 original.png) .
+1- Read the image in Python and show it ==> the image is made of 583x583 pixels and each color has its value as a three element vector [a,b,c], e.g. black is [0,0,0] and white is [255,255,255]. Result is illustrated in Figure ![alt text](https://github.com/BaddyMAK/Clustering-with-ML/blob/main/results/Figure%2012%20original.png) .
 
 2- Perform the K-means algorithm of Scikit learn library on the original image (Figure 12 in results folder) setting the number of clusters to 3 as mentioned before but need to transform the image to 2D Ndarray. In order to show the image again reshape it to 3D Ndarray representation is in Figure 13 (in results folder).
 
