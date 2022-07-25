@@ -1,4 +1,4 @@
-# Clustering-with-ML 
+# Melanoma cell detection using K-means and agglomerative clustering algorithms 
 ## Objectives: 
 This work is composed by two parts: 
 
